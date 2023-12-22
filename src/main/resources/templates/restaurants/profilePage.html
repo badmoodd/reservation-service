@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="background-color: #1b1b1b;" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/styles/storagesStyles.css"/>
+
+    <title>Restaurant</title>
+</head>
+<body style="background-color: white; min-height: 100vh;" class="h-full">
+<header style="background-color: #1b1b1b" class="p-3 text-white">
+    <div class="container d-flex justify-content-center">
+        <div
+                class="d-flex flex-wrap gap-2 align-items-center justify-content-center justify-content-lg-start"
+        >
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="currentColor"
+                    class="bi bi-bootstrap-fill"
+                    viewBox="0 0 16 16"
+            >
+                <path
+                        d="M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375v2.725z"
+                />
+                <path
+                        d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396z"
+                />
+            </svg>
+            <h2 style="color: #ffa31a" class="my-auto">Restaurants</h2>
+        </div>
+    </div>
+</header>
+
+<div class="container d-flex flex-column">
+    <div class="mt-4 mb-1">
+        <h1 th:text="${restaurant.getName()}" style="font-size: 32px"></h1>
+    </div>
+
+    <div class="d-flex flex-row gap-5">
+        <div class="d-flex flex-column gap-3">
+            <img th:src="'data:image/png;base64,' + ${restaurant.getProfileImage()}" alt="Изображение ресторана" style="max-width: 100px; max-height: 100px;"/>
+
+            <div class="d-flex flex-column gap-2">
+                <h5>Quick reservation</h5>
+
+
+                <div class="d-flex justify-content-between">
+                    <label class="my-auto" for="datepicker">Date</label>
+                    <input
+                            class="my-auto rounded border border-secondary"
+                            type="date"
+                            id="datepicker"
+                            name="datepicker"
+                            required
+                    />
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <label class="my-auto" for="timepicker">Time</label>
+                    <input
+                            class="my-auto rounded border border-secondary"
+                            type="time"
+                            id="timepicker"
+                            min="12:00"
+                            max="18:00"
+                            required
+                            name="timepicker"
+                    />
+                </div>
+
+                <hr/>
+
+                <div class="d-flex justify-content-between">
+                    <label class="my-auto" for="numberpicker"
+                    >Tables count</label
+                    >
+                    <input
+                            class="my-auto rounded border border-secondary"
+                            style="width: 70px"
+                            type="number"
+                            id="numberpicker"
+                            name="numberpicker"
+                            required
+                            value="1"
+                    />
+                </div>
+
+                <a th:href="@{'/reservations/reserve/' + ${restaurant.getRestaurantID()}}"
+                        type="button"
+                        class="btn mt-3"
+                        style="background-color: #ffa31a; color: white"
+                >
+                    Reserve
+                </a>
+            </div>
+        </div>
+        <div>
+            <p th:text="${restaurant.getDescription()}">
+<!--                Excepteur ea nostrud ut excepteur mollit veniam. Anim eu officia-->
+<!--                velit fugiat et deserunt ipsum. Aute exercitation qui veniam do quis-->
+<!--                officia nostrud culpa ad esse incididunt irure. Sint do officia-->
+<!--                ipsum laborum. Aute sit ex exercitation velit ad et in pariatur et-->
+<!--                commodo proident enim irure labore. Sit reprehenderit deserunt irure-->
+<!--                cillum consequat commodo quis aute ea. Dolor commodo eu velit irure-->
+<!--                fugiat commodo cupidatat tempor sint cupidatat enim voluptate fugiat-->
+<!--                dolore. Ipsum aliquip amet irure laborum dolor irure quis eu aliquip-->
+<!--                quis in ex quis ipsum. Consectetur qui aute occaecat sunt-->
+<!--                adipisicing ipsum dolore dolore nisi. Qui do ullamco ad enim.-->
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</body>
+</html>
